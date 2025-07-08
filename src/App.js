@@ -13,11 +13,12 @@ function App() {
     setMessages(prev => [...prev, userMessage]);
 
     try {
-      const response = await fetch('http://localhost:5000/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query: userInput }),
-      });
+  const response = await fetch('https://campusbot-backend.onrender.com/chat', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ query: userInput }),
+  });
+
 
       const data = await response.json();
       const botMessage = { sender: 'bot', text: data.reply };
